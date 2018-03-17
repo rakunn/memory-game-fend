@@ -61,10 +61,10 @@ nav {
 }
 
 nav .rating-widget .fa-star {
-	color: #ffed00;
-}
-av .rating-widget .fa-star .gray{
 	color: #e0e0e0;
+}
+nav .rating-widget .fa-star.gold {
+	color: #ffed00;
 }
 
 main .time {
@@ -130,6 +130,12 @@ main .time {
 .card.wrong {
 	animation: wrong 1s forwards;
 	background-color: #ff4447;
+}
+
+@media screen and (min-width: 600px) {
+	.card {
+		font-size: 3em;
+	}
 }
 
 
