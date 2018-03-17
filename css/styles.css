@@ -5,6 +5,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
 }
 
 *::before,
@@ -29,19 +30,31 @@ body {
 	header styles
 */
 header h1 {
+	font-weight: 700;
+	text-transform: uppercase;
 	text-align: center;
 }
 
 
 
 /*
-	main content styles
+	nav pane
 */
-main nav {
+nav {
 	background-color: #fff;
 	border-radius: 10px 10px 0 0;
+	display: flex;
+	justify-content: space-between;
   padding: 0.5em 1em;
 }
+
+nav .rating-widget .fa-star {
+	color: #ffed00;
+}
+av .rating-widget .fa-star .gray{
+	color: #e0e0e0;
+}
+
 
 
 /*
@@ -69,7 +82,7 @@ main nav {
 	border-radius: 10px;
 	color: #fff;
 	cursor: pointer;
-	font-size: 30px;
+	font-size: 2em;
 	margin: 10px;
 	width: calc(100vw/4 - 20px);
 	height: calc(100vw/4 - 20px);
