@@ -1,0 +1,164 @@
+/*
+	reset
+*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+
+/*
+	general styles
+*/
+body {
+	background-image: url(../img/congruent_pentagon.png); /* downloaded from www.subtlepatterns.com */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 100vh;
+}
+
+/*
+	header styles
+*/
+header h1 {
+	text-align: center;
+}
+
+
+
+/*
+	main content styles
+*/
+main nav {
+	background-color: #fff;
+	border-radius: 10px 10px 0 0;
+  padding: 0.5em 1em;
+}
+
+
+/*
+	Card and card deck styles
+*/
+
+.card-deck,
+.card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-deck {
+	background-color: #fff;
+	flex-wrap: wrap;
+	max-width: 600px;
+	background: #A1FFCE;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card {
+	background-color: #5ea8a7;
+	border-radius: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 30px;
+	margin: 10px;
+	width: calc(100vw/4 - 20px);
+	height: calc(100vw/4 - 20px);
+	max-width: 130px;
+	max-height: 130px;
+	transition: 0.5s all;
+}
+
+.card:hover {
+	transform: scale(1.05);
+}
+
+.card.selected {
+	background-color: #257985;
+	transform: scale(1.05);
+}
+
+.card.selected:hover,
+.card.correct:hover,
+.card.wrong:hover {
+	cursor: default;
+}
+
+.card.correct {
+	animation: correct 1s forwards;
+	background-color: #5aca84;
+}
+
+.card.wrong {
+	animation: wrong 1s forwards;
+	background-color: #ff4447;
+}
+
+
+/*
+	Footer styles
+*/
+
+footer p {
+	text-align: center;
+}
+
+/* card animations */
+@keyframes correct {
+	0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes wrong {
+  10%, 90% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(3px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-6px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(6px, 0, 0);
+  }
+}
