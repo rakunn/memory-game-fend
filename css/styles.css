@@ -26,10 +26,22 @@ body {
 	height: 100vh;
 }
 
+header,
+footer {
+	width: 100vw;
+	background-color: #5ea8a79c;
+}
+
 /*
 	header styles
 */
+header {
+	border-radius: 0 0 10px 10px;
+}
+
 header h1 {
+	color: #fff;
+	padding: 0.2em;
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
@@ -72,9 +84,7 @@ av .rating-widget .fa-star .gray{
 	background-color: #fff;
 	flex-wrap: wrap;
 	max-width: 600px;
-	background: #A1FFCE;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #ebfdd4;
 }
 
 .card {
@@ -120,8 +130,13 @@ av .rating-widget .fa-star .gray{
 /*
 	Footer styles
 */
+footer {
+	border-radius: 10px 10px 0 0;
+}
 
 footer p {
+	padding: 0.5em 0;
+	color: #fff;
 	text-align: center;
 }
 

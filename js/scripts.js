@@ -47,7 +47,7 @@ cards.forEach(el => {
 			selectedCards.push(this.firstElementChild.className.baseVal);
 
 			if(selectedCards.length === 2) {
-				selectedCards[0] === selectedCards[1] ? colorSelectedCards(true) : colorSelectedCards(false);
+				selectedCards[0] === selectedCards[1] ? colorMatchedCards(true) : colorMatchedCards(false);
 				selectedCards = [];
 			}
 			checkForWin();
@@ -55,7 +55,7 @@ cards.forEach(el => {
 	});
 });
 
-function colorSelectedCards(bool) {
+function colorMatchedCards(bool) {
 	const selection = document.querySelectorAll('.selected');
 	let newClass = "card correct";
 
