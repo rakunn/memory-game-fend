@@ -7,8 +7,14 @@ let clockInterval;
 
 function initializeGame() {
 	appendCardsToHTML(shuffleSelectedIcons(selectRandomIcons(iconList)));
-	initializeEventListeners();
+	initializeNav();
 	startClock();
+}
+
+function restartGame() {
+	resetClock();
+	resetUI();
+	appendCardsToHTML(shuffleSelectedIcons(selectRandomIcons(iconList)));
 }
 
 function selectRandomIcons(iconSet) {
@@ -32,6 +38,7 @@ function shuffleSelectedIcons(selectedIcons) {
 }
 
 function appendCardsToHTML(cardArray) {
+	removeAllCards();
 	const cardContainer = document.createDocumentFragment();
 	cardArray.forEach((el) => {
 		let cardDiv = document.createElement('div');
@@ -42,6 +49,7 @@ function appendCardsToHTML(cardArray) {
 		cardContainer.appendChild(cardDiv);
 	});
 	cardDeck.appendChild(cardContainer);
+	initializeEventListeners();
 }
 
 //////////// clock functions
@@ -73,7 +81,6 @@ function initializeEventListeners() {
 
 	cards.forEach(el => {
 		el.addEventListener('click', function(evt) {
-
 			if (this.className === "card") {
 				this.className = "card selected";
 				selectedCards.push(this.firstElementChild.className.baseVal);
@@ -91,6 +98,14 @@ function initializeEventListeners() {
 	});
 }
 
+function initializeNav() {
+	const restartButtons = document.querySelectorAll('.restart');
+	console.log(restartButtons)
+	restartButtons.forEach((button) => {
+		button.addEventListener('click', restartGame);
+	});
+}
+
 function colorMatchedCards(bool) {
 	const selection = document.querySelectorAll('.selected');
 	let newClass = "card correct";
@@ -103,7 +118,7 @@ function colorMatchedCards(bool) {
 
 function restoreIncorrectCards() {
 	const selection = document.querySelectorAll('.wrong');
-	setTimeout(() => selection.forEach(el => el.className = "card"),1500);
+	setTimeout(() => selection.forEach(el => el.className = "card"),1000);
 }
 
 function updateRating(moves) {
@@ -128,9 +143,39 @@ function checkForWin() {
 	const allCards = document.querySelectorAll('.card').length;
 	const correctCards = document.querySelectorAll('.correct').length || 0;
 	if (correctCards === allCards) {
-		console.log('win!');
 		stopClock();
+		awardTheWinner();
 	}
+}
+
+function awardTheWinner() {
+	fetch('https://aws.random.cat/meow')
+	  .then(function(response) {
+	    return response.json();
+	  })
+	  .then(function(data) {
+	    document.querySelector('.modal img').setAttribute('src', data.file);
+	  });
+
+  document.querySelector('.modal').classList.add('active');
+	document.querySelector('.dimmer').classList.add('active');
+}
+
+function removeAllCards() {
+	const cards = document.querySelectorAll('.card');
+	cards.forEach(el => {
+		el.remove();
+	});
+}
+
+function resetUI() {
+	const stars = document.querySelectorAll('svg.fa-star');
+	stars.forEach(el => el.classList.add('gold'));
+	document.querySelector('.modal').classList.remove('active');
+	document.querySelector('.dimmer').classList.remove('active');
+	document.querySelector('.modal img').setAttribute('src', "");
+	document.querySelector('.moves').innerText = "Moves: 0";
+	moves = 0;
 }
 
 initializeGame();

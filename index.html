@@ -9,6 +9,14 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 	</head>
 	<body>
+
+		<div class="modal">
+			<h2>You Won!</h2>
+			<h3>Here is your cat prize!</h3>
+			<img src="">
+			<button class="restart">Play Again?</button>
+		</div>
+
 		<header>
 			<h1>Memory Game</h1>
 		</header>
@@ -21,7 +29,7 @@
 					<i class="fas fa-star gold"></i>
 				</div>
 				<span class="moves">Moves: 0</span>
-				<i class="fas fa-sync"></i>
+				<span class="restart"><i class="fas fa-sync"></i></span>
 			</nav>
 			<div class="card-deck">
 			</div>
@@ -31,6 +39,9 @@
 		<footer>
 			<p>© 2018 Rafał Bagrowski</p>
 		</footer>
+
+		<div class="dimmer"></div>
+
 		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 </html>
