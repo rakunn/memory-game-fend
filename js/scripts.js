@@ -1,6 +1,5 @@
-// don't worry, this iconList variable was not written manually ;-)
-const iconList = ["address-book","address-card","adjust","archive","balance-scale","baseball-ball","basketball-ball","bed","birthday-cake","blind","bolt","book","bookmark","bowling-ball","briefcase","building","bullhorn","bullseye","calculator","calendar","calendar-alt","camera","camera-retro","certificate","chart-area","chart-bar","chart-line","chart-pie","child","circle","clipboard","clone","cloud","coffee","columns","comment","compass","compress","copy","copyright","crop","crosshairs","cut","desktop","download","edit","envelope","envelope-open","envelope-square","eraser","expand","eye","eye-dropper","eye-slash","fax","female","file","file-alt","file-image","film","folder","folder-open","football-ball","frown","futbol","globe","golf-ball","hdd","headphones","heart","hockey-puck","id-badge","id-card","image","images","industry","keyboard","laptop","male","map-marker","meh","microchip","mobile","mobile-alt","object-group","object-ungroup","paint-brush","paperclip","paste","pen-square","pencil-alt","percent","phone","phone-square","phone-volume","play","plug","power-off","print","quidditch","registered","save","server","sitemap","sliders-h","smile","square","star","sticky-note","street-view","suitcase","table","table-tennis","tablet","tablet-alt","tag","tags","tasks","thumbtack","tint","trademark","tv","upload","user","user-circle","user-md","user-plus","user-secret","user-times","users","volleyball-ball","wheelchair"];
-let moves = 0;
+// don't worry, this iconList variable was not written manually ;-) the list contains all know Font Awesome Brand icons (free)
+const iconList=["500px","accessible-icon","accusoft","adn","adversal","affiliatetheme","algolia","amazon","amazon-pay","amilia","android","angellist","angrycreative","angular","app-store","app-store-ios","apper","apple","apple-pay","asymmetrik","audible","autoprefixer","avianex","aviato","aws","bandcamp","behance","behance-square","bimobject","bitbucket","bitcoin","bity","black-tie","blackberry","blogger","blogger-b","bluetooth","bluetooth-b","btc","buromobelexperte","buysellads","cc-amazon-pay","cc-amex","cc-apple-pay","cc-diners-club","cc-discover","cc-jcb","cc-mastercard","cc-paypal","cc-stripe","cc-visa","centercode","chrome","cloudscale","cloudsmith","cloudversify","codepen","codiepie","connectdevelop","contao","cpanel","creative-commons","css3","css3-alt","cuttlefish","d-and-d","dashcube","delicious","deploydog","deskpro","deviantart","digg","digital-ocean","discord","discourse","dochub","docker","draft2digital","dribbble","dribbble-square","dropbox","drupal","dyalog","earlybirds","edge","elementor","ember","empire","envira","erlang","ethereum","etsy","expeditedssl","facebook","facebook-f","facebook-messenger","facebook-square","firefox","first-order","firstdraft","flickr","flipboard","fly","font-awesome","font-awesome-alt","font-awesome-flag","fonticons","fonticons-fi","fort-awesome","fort-awesome-alt","forumbee","foursquare","free-code-camp","freebsd","get-pocket","gg","gg-circle","git","git-square","github","github-alt","github-square","gitkraken","gitlab","gitter","glide","glide-g","gofore","goodreads","goodreads-g","google","google-drive","google-play","google-plus","google-plus-g","google-plus-square","google-wallet","gratipay","grav","gripfire","grunt","gulp","hacker-news","hacker-news-square","hips","hire-a-helper","hooli","hotjar","houzz","html5","hubspot","imdb","instagram","internet-explorer","ioxhost","itunes","itunes-note","jenkins","joget","joomla","js","js-square","jsfiddle","keycdn","kickstarter","kickstarter-k","korvue","laravel","lastfm","lastfm-square","leanpub","less","line","linkedin","linkedin-in","linode","linux","lyft","magento","maxcdn","medapps","medium","medium-m","medrt","meetup","microsoft","mix","mixcloud","mizuni","modx","monero","napster","nintendo-switch","node","node-js","npm","ns8","nutritionix","odnoklassniki","odnoklassniki-square","opencart","openid","opera","optin-monster","osi","page4","pagelines","palfed","patreon","paypal","periscope","phabricator","phoenix-framework","php","pied-piper","pied-piper-alt","pied-piper-pp","pinterest","pinterest-p","pinterest-square","playstation","product-hunt","pushed","python","qq","quinscape","quora","ravelry","react","rebel","red-river","reddit","reddit-alien","reddit-square","rendact","renren","replyd","resolving","rocketchat","rockrms","safari","sass","schlix","scribd","searchengin","sellcast","sellsy","servicestack","shirtsinbulk","simplybuilt","sistrix","skyatlas","skype","slack","slack-hash","slideshare","snapchat","snapchat-ghost","snapchat-square","soundcloud","speakap","spotify","stack-exchange","stack-overflow","staylinked","steam","steam-square","steam-symbol","sticker-mule","strava","stripe","stripe-s","studiovinari","stumbleupon","stumbleupon-circle","superpowers","supple","telegram","telegram-plane","tencent-weibo","themeisle","trello","tripadvisor","tumblr","tumblr-square","twitch","twitter","twitter-square","typo3","uber","uikit","uniregistry","untappd","usb","ussunnah","vaadin","viacoin","viadeo","viadeo-square","viber","vimeo","vimeo-square","vimeo-v","vine","vk","vnv","vuejs","weibo","weixin","whatsapp","whatsapp-square","whmcs","wikipedia-w","windows","wordpress","wordpress-simple","wpbeginner","wpexplorer","wpforms","xbox","xing","xing-square","y-combinator","yahoo","yandex","yandex-international","yelp","yoast","youtube","youtube-square"];let moves = 0;
 let clockInterval;
 
 function initializeGame() {
@@ -10,23 +9,30 @@ function initializeGame() {
 }
 
 function restartGame() {
-	resetClock();
-	resetUI();
 	appendCardsToHTML(shuffleSelectedIcons(selectRandomIcons(iconList)));
+	resetUI();
+	resetClock();
 }
 
+/*
+* @description selectes 16 random icons
+*	@param {Array} iconSet - list of icons provided in name format from Font Awesome
+*/
 function selectRandomIcons(iconSet) {
-	const iconAmount = 16;
+	const ICON_AMOUNT = 16;
 	const setSize = iconSet.length;
 
-	const selectedIcons = Array(iconAmount / 2)
-	//divided by two, since we want to have two icons of the same type
+	const selectedIcons = Array(ICON_AMOUNT / 2) //divided by two, since we want to have two icons of the same type
 		.fill()
 		.map(el => iconSet[Math.floor(Math.random() * setSize)]);
 
 	return [...selectedIcons, ...selectedIcons];
 }
 
+/*
+* @description Randomly shuffles array of icon names
+*	@param {Array} selectedIcons - array returned from selectRandomIcons function
+*/
 function shuffleSelectedIcons(selectedIcons) {
 	for (let i = selectedIcons.length - 1; i > 0; i--) {
 		const randomInt = Math.floor(Math.random() * (i + 1));
@@ -35,18 +41,25 @@ function shuffleSelectedIcons(selectedIcons) {
 	return selectedIcons;
 }
 
+/*
+* @description Creates and appends cards to HTML
+* @param {Array} cardArray - array returned from shuffleSelectedIcons function
+*/
 function appendCardsToHTML(cardArray) {
 	removeAllCards();
+
 	const cardDeck = document.querySelector('.card-deck');
 	const cardContainer = document.createDocumentFragment();
+
 	cardArray.forEach((el) => {
 		let cardDiv = document.createElement('div');
 		let card = document.createElement('i');
 		cardDiv.className = "card";
-		card.className = `fas fa-${el}`;
+		card.className = `fab fa-${el}`;
 		cardDiv.appendChild(card);
 		cardContainer.appendChild(cardDiv);
 	});
+
 	cardDeck.appendChild(cardContainer);
 	initializeEventListeners();
 }
@@ -120,6 +133,10 @@ function restoreIncorrectCards() {
 	setTimeout(() => selection.forEach(el => el.className = "card"),1000);
 }
 
+/*
+* @description Updaes start rating on Modal and Nav
+* @param {Number} moves - move amount returned from event listeners
+*/
 function updateRating(moves) {
 	const STEP = 10;
 	const stars = document.querySelectorAll('.rating-widget svg.fa-star.gold');

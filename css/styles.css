@@ -27,8 +27,9 @@ body {
 
 header,
 footer {
+	background-color: #5ea8a7;
+	opacity: 0.8;
 	width: 100vw;
-	background-color: #5ea8a79c;
 }
 
 /*
@@ -60,13 +61,15 @@ header h1 {
 	left: 50%;
 	top: -100%;
 	text-align: center;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	transition: 0.2s all ease-in;
 }
 
 .modal.active {
 	z-index: 1;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	top: 40%;
 }
 
@@ -141,11 +144,14 @@ nav {
 nav .restart {
 	color: #257985;
 	cursor: pointer;
+	transition: -webkit-transform 0.1s ease-in;
 	transition: transform 0.1s ease-in;
+	transition: transform 0.1s ease-in, -webkit-transform 0.1s ease-in;
 }
 
 nav .restart:active {
-	transform: scale(1.1) rotate(360deg);
+	-webkit-transform: scale(1.1) rotate(360deg);
+	        transform: scale(1.1) rotate(360deg);
 }
 
 main .time {
@@ -194,12 +200,14 @@ main .time {
 }
 
 .card:hover {
-	transform: scale(1.05) rotateY(0);
+	-webkit-transform: scale(1.05) rotateY(0);
+	        transform: scale(1.05) rotateY(0);
 }
 
 .card.selected {
 	background-color: #257985;
-  transform: scale(1.05) rotateY(360deg);
+  -webkit-transform: scale(1.05) rotateY(360deg);
+          transform: scale(1.05) rotateY(360deg);
 }
 
 .card.selected:hover,
@@ -209,12 +217,14 @@ main .time {
 }
 
 .card.correct {
-	animation: correct 1s forwards;
+	-webkit-animation: correct 1s forwards;
+	        animation: correct 1s forwards;
 	background-color: #5aca84;
 }
 
 .card.wrong {
-	animation: wrong 1s forwards;
+	-webkit-animation: wrong 1s forwards;
+	        animation: wrong 1s forwards;
 	background-color: #ff4447;
 }
 
@@ -244,52 +254,99 @@ footer p {
 }
 
 /* card animations */
-@keyframes correct {
+@-webkit-keyframes correct {
 	0% {
     -webkit-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
 
   10%, 20% {
     -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
     transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
   }
 
   30%, 50%, 70%, 90% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
   }
 
   40%, 60%, 80% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
   }
 
   100% {
     -webkit-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes correct {
+	0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes wrong {
+  10%, 90% {
+    -webkit-transform: translate3d(-3px, 0, 0);
+            transform: translate3d(-3px, 0, 0);
+  }
+
+  20%, 80% {
+    -webkit-transform: translate3d(3px, 0, 0);
+            transform: translate3d(3px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    -webkit-transform: translate3d(-6px, 0, 0);
+            transform: translate3d(-6px, 0, 0);
+  }
+
+  40%, 60% {
+    -webkit-transform: translate3d(6px, 0, 0);
+            transform: translate3d(6px, 0, 0);
   }
 }
 
 @keyframes wrong {
   10%, 90% {
-    transform: translate3d(-3px, 0, 0);
+    -webkit-transform: translate3d(-3px, 0, 0);
+            transform: translate3d(-3px, 0, 0);
   }
 
   20%, 80% {
-    transform: translate3d(3px, 0, 0);
+    -webkit-transform: translate3d(3px, 0, 0);
+            transform: translate3d(3px, 0, 0);
   }
 
   30%, 50%, 70% {
-    transform: translate3d(-6px, 0, 0);
+    -webkit-transform: translate3d(-6px, 0, 0);
+            transform: translate3d(-6px, 0, 0);
   }
 
   40%, 60% {
-    transform: translate3d(6px, 0, 0);
+    -webkit-transform: translate3d(6px, 0, 0);
+            transform: translate3d(6px, 0, 0);
   }
 }
