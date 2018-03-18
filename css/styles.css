@@ -139,7 +139,13 @@ nav {
 }
 
 nav .restart {
+	color: #257985;
 	cursor: pointer;
+	transition: transform 0.1s ease-in;
+}
+
+nav .restart:active {
+	transform: scale(1.1) rotate(360deg);
 }
 
 main .time {
