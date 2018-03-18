@@ -10,7 +10,7 @@
 
 Open Live demo here [Link](https://rakunn.github.io/memory-game-fend/)
 
-Simply download or clone this project to start working.
+To play, simply open Live demo and try to match all cards in pairs!
 
 This project has no code dependencies such as jQuery, CSS frameworks etc. External resources used in this work are:
 

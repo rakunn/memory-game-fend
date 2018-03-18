@@ -100,7 +100,6 @@ function initializeEventListeners() {
 
 function initializeNav() {
 	const restartButtons = document.querySelectorAll('.restart');
-	console.log(restartButtons)
 	restartButtons.forEach((button) => {
 		button.addEventListener('click', restartGame);
 	});
@@ -123,42 +122,58 @@ function restoreIncorrectCards() {
 
 function updateRating(moves) {
 	const STEP = 10;
-	const stars = document.querySelectorAll('svg.fa-star.gold');
+	const stars = document.querySelectorAll('.rating-widget svg.fa-star.gold');
+	const modalStars = document.querySelectorAll('.star-stat svg.fa-star.gold');
 	const lastStar = stars[stars.length-1];
+	const lastModalStar = modalStars[modalStars.length-1];
 	//3 cases, since we have 3 stars
 	switch (moves) {
 		case STEP :
 			lastStar.classList.remove('gold');
+			lastModalStar.classList.remove('gold');
 		break;
 		case STEP * 2:
 			lastStar.classList.remove('gold');
+			lastModalStar.classList.remove('gold');
 		break;
 		case STEP * 3:
 			lastStar.classList.remove('gold');
+			lastModalStar.classList.remove('gold');
 		break;
 	}
+}
+
+function updateModalStatistics() {
+	const movesFinalStat = document.querySelector('.moves-stat');
+	const timeFinalStat = document.querySelector('.time-stat');
+	movesFinalStat.innerText = "Total moves: " + moves;
+	timeFinalStat.innerText = "Time elapsed: " + document.querySelector('.time').innerText;
+
 }
 
 function checkForWin() {
 	const allCards = document.querySelectorAll('.card').length;
 	const correctCards = document.querySelectorAll('.correct').length || 0;
 	if (correctCards === allCards) {
-		stopClock();
 		awardTheWinner();
 	}
 }
 
 function awardTheWinner() {
+  document.querySelector('.modal').classList.add('active');
+	document.querySelector('.dimmer').classList.add('active');
+
+	stopClock();
+
+	updateModalStatistics();
+	//create random cat - the main award :)
 	fetch('https://aws.random.cat/meow')
 	  .then(function(response) {
 	    return response.json();
 	  })
 	  .then(function(data) {
 	    document.querySelector('.modal img').setAttribute('src', data.file);
-	  });
-
-  document.querySelector('.modal').classList.add('active');
-	document.querySelector('.dimmer').classList.add('active');
+		});
 }
 
 function removeAllCards() {
